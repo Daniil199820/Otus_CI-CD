@@ -5,6 +5,7 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project(helloworld VERSION ${PROJECT_VESRION})
 
+find_package(GTest REQUIRED)
 
 configure_file(version.h.in version.h)
 
@@ -20,6 +21,10 @@ target_include_directories(helloworld
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
 
+#set_target_properties(test_version PROPERTIES
+ #   COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+ #   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+#)
 
 target_include_directories(
     test_version PRIVATE

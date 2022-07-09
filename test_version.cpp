@@ -5,7 +5,6 @@
 #include <gtest/gtest.h>
 
 TEST(Version_Test, up_zero) {
-    // Arrange
     ASSERT_LE(version(),0);
 }
 
