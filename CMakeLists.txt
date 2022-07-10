@@ -9,6 +9,9 @@ find_package(GTest REQUIRED)
 
 configure_file(version.h.in version.h)
 
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/googletest" 
+"googletest")
+
 add_executable(helloworld_cli main.cpp)
 add_library(helloworld lib.cpp)
 add_executable(test_version test_version.cpp)
@@ -21,15 +24,12 @@ target_include_directories(helloworld
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
 
-set_target_properties(test_version PROPERTIES
-    COMPILE_DEFINITIONS GTest_DYN_LINK
-    INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
-)
 
-#target_include_directories(
-#    test_version PRIVATE
-#    ${GTEST_INCLUDE_DIRS}
-#)
+
+target_include_directories(
+    test_version PRIVATE
+   ${GTEST_INCLUDE_DIRS}
+)
 
 target_link_libraries(helloworld_cli PRIVATE
     helloworld
