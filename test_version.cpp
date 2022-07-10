@@ -5,6 +5,6 @@
 #include <gtest/gtest.h>
 
 TEST(Version_Test, up_zero) {
-    ASSERT_LE(version(),0);
+    ASSERT_GE(version(),0);
 }
 
