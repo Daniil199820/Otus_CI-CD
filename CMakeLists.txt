@@ -9,7 +9,7 @@ find_package(GTest REQUIRED)
 
 configure_file(version.h.in version.h)
 
-add_subdirectory("${GTEST}" 
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/GTEST_LIN" 
 "googletest")
 
 add_executable(helloworld_cli main.cpp)
@@ -35,7 +35,7 @@ target_link_libraries(helloworld_cli PRIVATE
     helloworld
 )
 
-target_link_libraries(test_version
+target_link_libraries(test_version PRIVATE
     ${GTEST_BOTH_LIBRARIES}
     helloworld
 )
